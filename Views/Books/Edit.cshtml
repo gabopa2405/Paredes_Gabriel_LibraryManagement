@@ -1,0 +1,59 @@
+@model Paredes_Gabriel_LibraryManagement.Models.Book
+
+@{
+    ViewData["Title"] = "Edit Book";
+}
+
+<h1>Edit Book</h1>
+
+<h4>Book</h4>
+<hr />
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BookId" />
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="AuthorId" class="form-label">Author</label>
+                <select asp-for="AuthorId" class="form-select" asp-items="ViewBag.AuthorId"></select>
+                <span asp-validation-for="AuthorId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Isbn" class="form-label">ISBN</label>
+                <input asp-for="Isbn" class="form-control" />
+                <span asp-validation-for="Isbn" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="PublicationDate" class="form-label">Publication Date</label>
+                <input asp-for="PublicationDate" type="date" class="form-control" />
+                <span asp-validation-for="PublicationDate" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="GenreId" class="form-label">Category / Genre</label>
+                <select asp-for="GenreId" class="form-select" asp-items="ViewBag.GenreId"></select>
+                <span asp-validation-for="GenreId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="AvailabilityStatus" class="form-label">Availability Status</label>
+                <select asp-for="AvailabilityStatus" class="form-select">
+                    <option value="true">Available</option>
+                    <option value="false">Checked Out</option>
+                </select>
+                <span asp-validation-for="AvailabilityStatus" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

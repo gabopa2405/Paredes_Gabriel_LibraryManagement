@@ -1,0 +1,58 @@
+@model Paredes_Gabriel_LibraryManagement.Models.Loan
+
+@{
+    ViewData["Title"] = "Create Loan";
+}
+
+<h1>Create Loan</h1>
+
+<h4>Loan</h4>
+<hr />
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="BookId" class="form-label">Book</label>
+                <select asp-for="BookId" class="form-select" asp-items="ViewBag.BookId"></select>
+                <span asp-validation-for="BookId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="MemberId" class="form-label">Member</label>
+                <select asp-for="MemberId" class="form-select" asp-items="ViewBag.MemberId"></select>
+                <span asp-validation-for="MemberId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="CheckoutDate" class="form-label">Checkout Date</label>
+                <input asp-for="CheckoutDate" type="date" class="form-control" />
+                <span asp-validation-for="CheckoutDate" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="DueDate" class="form-label">Due Date</label>
+                <input asp-for="DueDate" type="date" class="form-control" />
+                <span asp-validation-for="DueDate" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="ReturnDate" class="form-label">Return Date</label>
+                <input asp-for="ReturnDate" type="date" class="form-control" />
+                <span asp-validation-for="ReturnDate" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="ReturnStatus" class="form-label">Return Status</label>
+                <select asp-for="ReturnStatus" class="form-select">
+                    <option value="false" selected>Active / Pending</option>
+                    <option value="true">Returned</option>
+                </select>
+                <span asp-validation-for="ReturnStatus" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

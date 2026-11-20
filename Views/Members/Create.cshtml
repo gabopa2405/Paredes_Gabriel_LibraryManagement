@@ -1,0 +1,38 @@
+@model Paredes_Gabriel_LibraryManagement.Models.Member
+@{ ViewData["Title"] = "Create Member"; }
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white fw-bold">Create Member</div>
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label">Full Name</label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="MembershipId" class="form-label">Membership ID</label>
+                        <input asp-for="MembershipId" class="form-control" placeholder="e.g. MEM003" />
+                        <span asp-validation-for="MembershipId" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ContactInfo" class="form-label">Contact Info (Email / Phone)</label>
+                        <input asp-for="ContactInfo" class="form-control" />
+                        <span asp-validation-for="ContactInfo" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="JoinDate" class="form-label">Join Date</label>
+                        <input asp-for="JoinDate" type="date" class="form-control" />
+                        <span asp-validation-for="JoinDate" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts { @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} }

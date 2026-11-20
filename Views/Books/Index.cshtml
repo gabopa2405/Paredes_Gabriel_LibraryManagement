@@ -1,0 +1,68 @@
+@model IEnumerable<Paredes_Gabriel_LibraryManagement.Models.Book>
+@{ ViewData["Title"] = "Books"; }
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold mb-0"><i class="bi bi-journal-bookmark me-2 text-primary"></i>Books</h2>
+    <a asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-lg me-1"></i>Create New</a>
+</div>
+
+<div class="card shadow-sm border-0">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Title</th>
+                    <th>ISBN</th>
+                    <th>Publication Date</th>
+                    <th>Status</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td class="fw-semibold">@item.Title</td>
+                    <td>@item.Isbn</td>
+                    <td>@item.PublicationDate</td>
+                    <td>
+                        @if (item.AvailabilityStatus == true)
+                        {
+                            <span class="badge bg-success">Available</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning text-dark">Checked Out</span>
+                        }
+                    </td>
+                    <td>@item.Author.Name</td>
+                    <td>@(item.Genre?.GenreName ?? "N/A")</td>
+                    <td class="text-end text-nowrap">
+                        <a asp-action="Edit" asp-route-id="@item.BookId" class="btn btn-sm btn-outline-primary">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.BookId" class="btn btn-sm btn-outline-info">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.BookId" class="btn btn-sm btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+        <span class="text-muted small">Page @ViewBag.CurrentPage of @ViewBag.TotalPages</span>
+        <ul class="pagination pagination-sm mb-0">
+            <li class="page-item @(ViewBag.CurrentPage <= 1 ? "disabled" : "")">
+                <a class="page-link" asp-action="Index" asp-route-page="@(ViewBag.CurrentPage - 1)">Previous</a>
+            </li>
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                    <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
+                </li>
+            }
+            <li class="page-item @(ViewBag.CurrentPage >= ViewBag.TotalPages ? "disabled" : "")">
+                <a class="page-link" asp-action="Index" asp-route-page="@(ViewBag.CurrentPage + 1)">Next</a>
+            </li>
+        </ul>
+    </div>
+</div>

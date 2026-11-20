@@ -1,0 +1,35 @@
+@model Paredes_Gabriel_LibraryManagement.Models.Loan
+
+@{
+    ViewData["Title"] = "Loan Details";
+}
+
+<h1>Loan Details</h1>
+
+<div>
+    <h4>Loan</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Book)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Book.Title)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Member)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Member.Name)</dd>
+
+        <dt class="col-sm-3">Checkout Date</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.CheckoutDate)</dd>
+
+        <dt class="col-sm-3">Due Date</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.DueDate)</dd>
+
+        <dt class="col-sm-3">Return Date</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.ReturnDate)</dd>
+
+        <dt class="col-sm-3">Return Status</dt>
+        <dd class="col-sm-9">@(Model.ReturnStatus == true ? "Returned" : "Active / Pending")</dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.LoanId" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

@@ -1,0 +1,18 @@
+@model Paredes_Gabriel_LibraryManagement.Models.Author
+@{ ViewData["Title"] = "Author Details"; }
+
+<div class="card shadow-sm border-0">
+    <div class="card-header bg-white fw-bold">Author Details</div>
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3">Name</dt>
+            <dd class="col-sm-9">@Model.Name</dd>
+            <dt class="col-sm-3">Biography</dt>
+            <dd class="col-sm-9">@(Model.Bio ?? "N/A")</dd>
+        </dl>
+    </div>
+    <div class="card-footer bg-white">
+        <a asp-action="Edit" asp-route-id="@Model.AuthorId" class="btn btn-primary">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

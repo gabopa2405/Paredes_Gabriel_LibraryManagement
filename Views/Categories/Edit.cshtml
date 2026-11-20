@@ -1,0 +1,24 @@
+@model Paredes_Gabriel_LibraryManagement.Models.Category
+@{ ViewData["Title"] = "Edit Category"; }
+
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white fw-bold">Edit Category</div>
+            <div class="card-body">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="GenreId" />
+                    <div class="mb-3">
+                        <label asp-for="GenreName" class="form-label">Genre Name</label>
+                        <input asp-for="GenreName" class="form-control" />
+                        <span asp-validation-for="GenreName" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts { @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} }

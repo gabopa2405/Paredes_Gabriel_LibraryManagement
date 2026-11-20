@@ -1,0 +1,26 @@
+@model Paredes_Gabriel_LibraryManagement.Models.Member
+@{ ViewData["Title"] = "Delete Member"; }
+
+<div class="card shadow-sm border-danger">
+    <div class="card-header bg-danger text-white fw-bold">Confirm Delete Member</div>
+    <div class="card-body">
+        <p>Are you sure you want to delete this member?</p>
+        <dl class="row mb-0">
+            <dt class="col-sm-3">Name</dt>
+            <dd class="col-sm-9">@Model.Name</dd>
+            <dt class="col-sm-3">Membership ID</dt>
+            <dd class="col-sm-9">@Model.MembershipId</dd>
+            <dt class="col-sm-3">Contact Info</dt>
+            <dd class="col-sm-9">@(Model.ContactInfo ?? "N/A")</dd>
+            <dt class="col-sm-3">Join Date</dt>
+            <dd class="col-sm-9">@Model.JoinDate</dd>
+        </dl>
+    </div>
+    <div class="card-footer bg-white">
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="MemberId" />
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </form>
+    </div>
+</div>

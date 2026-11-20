@@ -1,0 +1,16 @@
+@model Paredes_Gabriel_LibraryManagement.Models.Category
+@{ ViewData["Title"] = "Category Details"; }
+
+<div class="card shadow-sm border-0">
+    <div class="card-header bg-white fw-bold">Category Details</div>
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3">Genre Name</dt>
+            <dd class="col-sm-9">@Model.GenreName</dd>
+        </dl>
+    </div>
+    <div class="card-footer bg-white">
+        <a asp-action="Edit" asp-route-id="@Model.GenreId" class="btn btn-primary">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
