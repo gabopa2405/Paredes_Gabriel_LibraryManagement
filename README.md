@@ -84,3 +84,9 @@ Paredes_Gabriel_LibraryManagement/
    dotnet run
    ```
    Open the local URL displayed in the terminal (e.g., `http://localhost:5000`).
+   ## Submission Package Structure
+
+- `Controllers/`, `Data/`, `Models/`, `Views/`, `wwwroot/`, `Program.cs`, `appsettings.json`: ASP.NET Core 10 MVC source code (excluding `bin/` and `obj/`).
+- `Paredes_Gabriel_LibraryManagement_ERD.png`: Entity-Relationship Diagram exported from pgAdmin 4.
+- `library_management_database/Paredes_Gabriel_LibraryManagement.backup`: Final PostgreSQL binary backup (Custom format).
+- `library_management_database/schema.sql`, `sample_data.sql`, `main.sql`, `functions.sql`, `queries.sql`: Original SQL schema, seed data, and query scripts.
